@@ -1,9 +1,9 @@
-package cn.com.agree.hook;
+package cn.com.agree;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import cn.com.agree.dynamic_proxy_hook.R;
+import cn.com.agree.startActivityHook.R;
 
 /**
  * Author: zhaomenghuan

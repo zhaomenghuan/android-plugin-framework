@@ -4,19 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.com.agree.hook.MainActivity">
+    tools:context=".TestActivity">
 
     <Button
-        android:id="@+id/activityStart"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Activity 的 startActivity 打开新的Activity" />
-
-    <Button
-        android:id="@+id/contextStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Context 的 startActivity 打开新的Activity" />
+        android:text="测试" />
 </LinearLayout>
