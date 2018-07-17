@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
-        ActivityThreadHookHelper.doContextStartHook();
+        // ActivityThreadHookHelper.doContextStartHook();
         ActivityThreadHookHelper.doHandlerHook();
     }
 }
