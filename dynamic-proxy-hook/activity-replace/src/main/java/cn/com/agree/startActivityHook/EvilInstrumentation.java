@@ -23,8 +23,7 @@ public class EvilInstrumentation extends Instrumentation {
         this.instrumentation = instrumentation;
     }
 
-    public ActivityResult execStartActivity(
-            Context who, IBinder contextThread, IBinder token, Activity target,
+    public ActivityResult execStartActivity(Context who, IBinder contextThread, IBinder token, Activity target,
             Intent intent, int requestCode, Bundle options) {
 
         StringBuilder sb = new StringBuilder();
@@ -37,7 +36,7 @@ public class EvilInstrumentation extends Instrumentation {
         .append("options = [").append(options).append("]");;
         Logger.i(EvilInstrumentation.class, "执行了startActivity, 参数如下: " + sb.toString());
 
-        // 在此此处先将 intent 原本的 Component 保存起来,
+        // 在此处先将 intent 原本的 Component 保存起来,
         // 然后创建一个新的 intent 只想 StubActivity 并替换掉原本的 Activity,以达通过 ams 验证的目的,然后等 ams 验证通过后再将其还原。
         // 方法一: 在此替换虽然非常简单,但此处很明显不是一个好的hook点,因为 mInstrumentation 是 Activity 的成员变量,但是在程序中 Activity 并不是一个,而是有多个实例,所以需要在每个实例中 hook 掉才可以。
         Intent replaceIntent = new Intent(target, StubActivity.class);

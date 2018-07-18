@@ -9,12 +9,6 @@ import java.lang.reflect.Field;
 
 import cn.com.agree.log.Logger;
 
-/**
- * 一开始我们打算替换ActivityTread中的mH成员变量,所以在这直接继承了Handler,在替换时抛出了异常,发现是行不通的, 我们只能另寻出路,当然这些替换的方法在weishu.me的博客中都已经给我们写好了,不过我们要想知道为什么就得自己动手先把坑趟一边才能知其所以然。
- * public class ActivityThreadHandler extends Handler {
- * <p>
- * }
- */
 public class ActivityThreadHandlerCallback implements Handler.Callback {
     private Handler mBaseHandler;
 

@@ -12,7 +12,6 @@ import cn.com.agree.startActivityHook.R;
 
 public class MainActivity extends Activity {
     private Button activityStart;
-    private Button contextStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +28,11 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-//        // Context 类的 startActivity 方法
-//        contextStart = findViewById(R.id.contextStart);
-//        contextStart.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, TestActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                getApplicationContext().startActivity(intent);
-//            }
-//        });
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
-        // ActivityThreadHookHelper.doContextStartHook();
         ActivityThreadHookHelper.doHandlerHook();
     }
 }
