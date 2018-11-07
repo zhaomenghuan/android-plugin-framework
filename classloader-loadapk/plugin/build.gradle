@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+}
+
+task makeJar(type: Jar) {
+    from zipTree(file('build/intermediates/bundles/release/classes.jar'))
+    from fileTree(dir: 'src/main', includes: ['assets/**'])
+    baseName = "plugin"
+    destinationDir = file(rootProject.ext.releaseDirsPath)
+    exclude('android/', 'BuildConfig.class', 'R.class')
+    exclude {
+        it.name.startsWith('R$');
+    }
+}
+
+makeJar.dependsOn(build)
